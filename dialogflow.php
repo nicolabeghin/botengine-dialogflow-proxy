@@ -9,7 +9,7 @@ use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 use Google\Cloud\Core\ServiceBuilder;
 
-putenv('GOOGLE_APPLICATION_CREDENTIALS='.CREDENTIALS_FILE);
+putenv('GOOGLE_APPLICATION_CREDENTIALS='.DIALOGFLOW_CREDENTIALS_FILE);
 
 $jsonResponse = [];
 try {

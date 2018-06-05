@@ -1,0 +1,6 @@
+{
+    "require": {
+        "monolog/monolog": "^1.23",
+        "google/cloud-dialogflow": "^0.2.1"
+    }
+}

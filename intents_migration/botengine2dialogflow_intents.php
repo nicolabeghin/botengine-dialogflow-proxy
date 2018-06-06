@@ -1,6 +1,7 @@
 <?php 
 $file='stories.json';
 $outfile='intents.json';
+$skippedPhrases=['{{sys.any:any}}', '{{sys.no:no}}', '{{sys.yes:yes}}'];
 
 if (file_exists($file)==false) {
 	throw new Exception($file.' does not exist');
@@ -71,7 +72,7 @@ function handleResponses($responses, &$a) {
 }
 
 foreach($stories as $story) {
-	if (!empty($story->userSays)) {
+	if (!empty($story->userSays) && !in_array($story->userSays[0], $skippedPhrases)) {
 		$a=array(
 			'display_name' => $story->name,
 			'trainingPhrases' => [],

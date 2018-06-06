@@ -45,6 +45,10 @@ class DialogFlowProxy extends BaseLoggerEnabled {
 	}
 	
 	public function detectIntent($text, $sessionId) {
+		if (strlen($text)>255) {
+	        self::$log->warning('Truncating to 256 chars');
+	        $text=substr($text, 0, 255);
+        }
 		self::$log->info('Retrieving intent for text "'.$text.'"');
 		$sessionsClient = new SessionsClient();
 		$session = $sessionsClient->sessionName($this->project, $sessionId ?: uniqid());
